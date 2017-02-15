@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/VitaliyLitvin/hello-rest.svg?branch=master)](https://travis-ci.org/VitaliyLitvin/hello-rest)
+
 Для запуска приложения необходимо выполнить следующие действия:
 
 1. Установить и настроить PostgreSQL server. 
