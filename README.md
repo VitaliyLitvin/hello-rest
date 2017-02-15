@@ -19,4 +19,4 @@
  - открыть командную строку и перейти в какталог с файлом [hello-rest-1.0-SNAPSHOT.jar].
  - выполнить [java -jar hello-rest-1.0-SNAPSHOT.jar].
 
-https://travis-ci.org/VitaliyLitvin/hello-rest.svg?branch=master
+
