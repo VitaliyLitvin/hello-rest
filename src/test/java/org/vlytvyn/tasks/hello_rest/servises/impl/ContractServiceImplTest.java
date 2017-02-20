@@ -6,7 +6,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import org.vlytvyn.tasks.hello_rest.models.Contact;
-import org.vlytvyn.tasks.hello_rest.repositories.ContractRepository;
+import org.vlytvyn.tasks.hello_rest.repositories.ContactRepository;
 import org.vlytvyn.tasks.hello_rest.servises.JsonWriter;
 
 import java.util.LinkedList;
@@ -20,9 +20,9 @@ import static org.mockito.Mockito.*;
 public class ContractServiceImplTest {
 
     @InjectMocks
-    ContractServiceImpl contractService;
+    ContactServiceImpl contractService;
     @Mock
-    private ContractRepository repository;
+    private ContactRepository repository;
     @Mock
     JsonWriter jsonWriter;
 
