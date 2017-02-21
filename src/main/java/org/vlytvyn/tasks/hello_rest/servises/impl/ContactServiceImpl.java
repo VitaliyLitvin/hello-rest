@@ -1,6 +1,9 @@
 package org.vlytvyn.tasks.hello_rest.servises.impl;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.vlytvyn.tasks.hello_rest.models.Contact;
 import org.vlytvyn.tasks.hello_rest.repositories.ContactRepository;
@@ -14,17 +17,22 @@ import java.util.regex.Pattern;
 public class ContactServiceImpl implements ContactService {
 
     @Autowired
-    private ContactRepository repository;
+    private ContactRepository contactRepository;
 
     @Override
-    public void writeRequest(JsonWriter writer, String filter){
+    public void writeRequest(JsonWriter writer, String filter) {
         Pattern p = Pattern.compile(filter);
-        for (Contact contact : repository.findAll()) {
-            Matcher m = p.matcher(contact.getName());
-            if (!m.matches()) {
-                writer.writeJson(contact);
+        Pageable pageConf = new PageRequest(0, 100);
+        Page<Contact> page;
+        do {
+            page = contactRepository.findAll(pageConf);
+            for (Contact contact : page) {
+                Matcher m = p.matcher(contact.getName());
+                if (!m.matches()) {
+                    writer.writeJson(contact);
+                }
             }
-        }
-
+            pageConf = page.nextPageable();
+        } while (page.hasNext());
     }
 }
